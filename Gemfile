@@ -44,6 +44,9 @@ gem 'erb2haml'
 # secret key
 gem 'dotenv-rails'
 
+# bootstrap
+gem 'bootstrap-sass', '~> 3.3.6'
+
 group :development, :test do
   # Test
   gem 'factory_girl_rails'
