@@ -1,0 +1,21 @@
+<%= form_for letter_header, remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :send_from %>
+    <%= f.text_field :send_from, placeholder: "あけぼの太郎", class: "form-control" %>
+    <%= f.label :title %>
+    <%= f.text_field :title, placeholder: "いつもありがとう的なサムシング", class: "form-control" %>
+  </div>
+    <p class="h5">宛先</p>
+    <% @letter_header.destinations.each do |destination| %>
+      <div class="form-inline">
+        <%= f.fields_for :destinations, destination do |d| %>
+          <%= d.label :dear %>
+          <%= d.text_field :dear, placeholder: "愛しの上戸彩さん", class: "form-control" %>
+          <%= d.label :mail %>
+          <%= d.email_field :mail, placeholder: "Input Email", class: "form-control" %>
+          <%= d.hidden_field :id, value: d.object.id %>
+        <% end %>
+      </div>
+    <% end %>
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>

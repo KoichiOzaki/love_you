@@ -1,0 +1,20 @@
+<% flash.each do |key, value| %>
+  <% key = "info" if key == "notice" %>
+  <% key = "danger"  if key == "alert" %>
+  <%= content_tag :div, value, class: "alert alert-#{key}" %>
+<% end %>
+<div class="form-group">
+  <label>Send from</label>
+  <p><%= letter_header.send_from %></p>
+  <label>Title</label>
+  <p><%= letter_header.title %></p>
+</div>
+<p class="h5">宛先</p>
+<div class="form-inline">
+  <label>Dear</label>
+  <p><%= letter_header.destinations.first.dear %></p>
+  <label>Mail</label>
+  <p><%= letter_header.destinations.first.mail %></p>
+</div>
+<br>
+<h4><編集></h5>

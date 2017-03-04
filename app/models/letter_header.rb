@@ -10,6 +10,7 @@
 #  keyword    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  send_from  :string(255)
 #
 # Indexes
 #
@@ -17,4 +18,8 @@
 #
 
 class LetterHeader < ApplicationRecord
+  has_many :destinations
+  # has_one :letter_summary
+  belongs_to :user
+  accepts_nested_attributes_for :destinations
 end

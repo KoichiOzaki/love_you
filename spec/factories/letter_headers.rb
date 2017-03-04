@@ -10,6 +10,7 @@
 #  keyword    :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  send_from  :string(255)
 #
 # Indexes
 #

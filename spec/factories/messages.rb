@@ -1,20 +1,15 @@
 # == Schema Information
 #
-# Table name: images
+# Table name: messages
 #
 #  id         :integer          not null, primary key
-#  image      :string(255)      not null
-#  message_id :integer          not null
+#  body       :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Indexes
-#
-#  index_images_on_message_id  (message_id)
-#
 
 FactoryGirl.define do
-  factory :image do
+  factory :message do
     
   end
 end
