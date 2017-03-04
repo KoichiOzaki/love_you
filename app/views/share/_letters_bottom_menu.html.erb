@@ -1,0 +1,42 @@
+<% if current_user %>
+  <div class="panel panel-default" style="padding: 15px;">
+    <table class="table">
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= link_to letters_path,class: "btn btn-primary btn-block" do %>
+                <h5>お手紙一覧</h5>
+              <% end %>
+            </div>
+            <div class="col-sm-6">
+              <%= link_to '#',class: "btn btn-primary btn-block" do %>
+                <h5>おしてもなんもおこらんよ</h5>
+              <% end %>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="row">
+            <div class="col-sm-6">
+              <h5>お手紙を見る</h5>
+            </div>
+            <div class="col-sm-6">
+              <a href="./gallery.html" class="btn btn-primary btn-block">index</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+<% else %>
+  <div class="panel panel-default" style="padding: 15px;">
+    <div class="bg-info" style="text-align: center; padding: 10px;">
+      <%= link_to new_user_path do %>
+        <p class="h2 text-muted">ログインはこちら</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

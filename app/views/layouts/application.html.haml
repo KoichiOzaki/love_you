@@ -4,20 +4,13 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title LoveYou
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
-    #nav
-      -if current_user
-        = link_to "Edit Profile", edit_user_path(current_user.id)
-        = link_to "Logout", :logout, method: :post
-      - else
-        = link_to "Register", new_user_path
-        = link_to "Login", :login
-    %div
-      %p#notice= flash[:notice]
-      %p#alert= flash[:alert]
-
-    = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
-
-    = yield
+    = render 'share/header'
+    %div{style: 'margin-top: 50px;'}
+      - flash.each do |key, value|
+        - key = "info" if key == "notice"
+        - key = "danger"  if key == "alert"
+        = content_tag :div, value, class: "alert alert-#{key}"
+      = yield

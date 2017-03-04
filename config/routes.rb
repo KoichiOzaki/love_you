@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root to: 'letters#index'
+  root to: 'top#index'
+  resources :top, only: :index
+  resources :letters
+  # sorcery
   resources :user_sessions
   resources :users
-  resources :letters
-
   get 'login' => 'user_sessions#new', :as => :login
   post 'logout' => 'user_sessions#destroy', :as => :logout
   post "oauth/callback" => "oauths#callback"

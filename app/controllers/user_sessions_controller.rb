@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  # skip_before_action :require_login, except: [:destroy]
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @user = User.new
@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:name], params[:password], params[:remember])
-      redirect_back_or_to(:users, notice: 'Login successful')
+      redirect_to root_path, notice: 'Login successful'
     else
       flash.now[:alert] = 'Login failed'
       render action: 'new'
@@ -18,6 +18,6 @@ class UserSessionsController < ApplicationController
     remember_me!
     forget_me!
     logout
-    redirect_to(:users, notice: 'Logged out!')
+    redirect_to root_path, notice: 'Login successful'
   end
 end

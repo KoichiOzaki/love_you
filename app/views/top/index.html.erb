@@ -1,0 +1,15 @@
+<main>
+  <div class="container" style="margin-top: 70px;">
+    <div class="jumbotron">
+      <div class="container">
+        <div class="page-header">
+          <h1>
+            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> 日頃の感謝を伝えよう
+          </h1>
+        </div>
+          <%= link_to 'お手紙を書く', new_letter_path,class: 'btn btn-primary btn-lg'%>
+      </div>
+    </div>
+    <%= render 'share/letters_bottom_menu' %>
+  </div>
+</main>

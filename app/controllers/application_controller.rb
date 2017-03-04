@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
-  # # app/controllers/application_controller.rb
-  # before_action :require_login
+  before_action :require_login
 
   # # app/controllers/users_controller.rb
   # もしログインを必要としない場合は以下を該当のControllerに記述する
@@ -15,5 +13,4 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_path, alert: "Please login first"
   end
-
 end
