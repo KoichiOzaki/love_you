@@ -41,6 +41,9 @@ gem 'sorcery'
 gem 'haml-rails'
 gem 'erb2haml'
 
+# secret key
+gem 'dotenv-rails'
+
 group :development, :test do
   # Test
   gem 'factory_girl_rails'
