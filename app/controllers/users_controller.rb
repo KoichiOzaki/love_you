@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        # redirect_to(:users, notice: 'User was successfully created')
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -71,4 +72,8 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
     end
+  # private
+  # def not_authenticated
+  #   redirect_to login_path, alert: "Please login first"
+  # end
 end
