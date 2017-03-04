@@ -34,6 +34,13 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+#  User func
+gem 'sorcery'
+
+# haml
+gem 'haml-rails'
+gem 'erb2haml'
+
 group :development, :test do
   # Test
   gem 'factory_girl_rails'
