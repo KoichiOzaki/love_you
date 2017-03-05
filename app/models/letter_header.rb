@@ -20,6 +20,8 @@
 class LetterHeader < ApplicationRecord
   has_many :destinations
   # has_one :letter_summary
+  has_many :images
   belongs_to :user
+  belongs_to :image
   accepts_nested_attributes_for :destinations
 end

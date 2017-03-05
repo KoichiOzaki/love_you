@@ -3,5 +3,13 @@
     <h1>
       <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> お手紙一覧
     </h1>
+    <ol>
+      <% @letter_headers.each do |letter_header| %>
+        <li class='h3'>
+          <%= link_to letter_header.title, edit_letter_path(letter_header) %>
+        </li>
+      <% end %>
+    </ol>
+
   </div>
 </main>

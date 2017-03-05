@@ -5,20 +5,20 @@
         <div class="panel-heading" role="tab" id="headingOne">
           <h4 class="panel-title">
             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            お手紙情報
+            お手紙情報を確認する
             </a>
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body" id="letter_header_partial">
-            <% if @letter_header.id  %>
+            <% if @letter_header  %>
               <%= render @letter_header %>
             <% else %>
               <p>送り先を登録してねん</p>
             <% end %>
           </div>
-          <div class="panel-body" id="letter_header_form">
-            <%= render partial: 'letter_headers/form', locals: { letter_header: @letter_header }, remote: true %>
+          <div class="panel-body" id="letter-header-form">
+            <%= render partial: 'letter_headers/form', locals: { letter_header: @letter_header } %>
           </div>
         </div>
       </div>
@@ -46,12 +46,12 @@
         <div class="panel-body">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active">
-              <a href="#picture-control" aria-controls="picture-control" role="tab" data-toggle="tab" id="">
+              <a href="#picture-form" aria-controls="picture-form" role="tab" data-toggle="tab" id="">
                 <span class="glyphicon glyphicon-picture" aria-hidden="true">Picture</span>
               </a>
             </li>
             <li role="presentation">
-              <a href="#message-control" aria-controls="message-control" role="tab" data-toggle="tab" id="js-toolTabPen">
+              <a href="#message-form" aria-controls="message-form" role="tab" data-toggle="tab" id="js-toolTabPen">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true">Message</span>
               </a>
             </li>
@@ -59,29 +59,18 @@
 
           <div class="tab-content" style="margin-top: 20px;">
                           <!--#picture-control-->
-            <div role="tabpanel" class="tab-pane fade in active" id="picture-control">
-
-              <p>愛しいあの人との思い出の画像をアップロードしよう！</p>
-              <ol>
-                <li id="picture-controlFile">
-                  <dl>
-                    <dt>画像を選択してください</dt>
-                    <dd class="form-group" style="margin-top: 5px;overflow: hidden;">
-                      <input id="picture-controlFileInputFile" type="file" accept="image/*">
-                    </dd>
-                  </dl>
-                </li>
-              </ol>
+            <div role="tabpanel" class="tab-pane fade in active" id="picture-form">
+              <%= render partial: 'images/form', locals: { letter_header: @letter_header, image: @letter_header.images.first } %>
             </div>
 
-            <div role="tabpanel" class="tab-pane fade in" id="message-control">
+            <div role="tabpanel" class="tab-pane fade in" id="message-form">
               <p>愛しいあの人へのメッセージを書こう！</p>
               <ol>
-                <li id="message-controlBody">
+                <li id="message-formBody">
                   <dl>
                     <dt>メッセージを入力してください</dt>
                     <dd class="form-group" style="margin-top: 5px;overflow: hidden;">
-                      <input id="picture-controlFileInputFile" type="file" accept="image/*">
+                      <input id="picture-formFileInputFile" type="file" accept="image/*">
                     </dd>
                   </dl>
                 </li>
@@ -92,6 +81,7 @@
       </div>
 
       <h4 class="text-info" style="margin-top: 40px;">その他メニュー</h4>
+
       <div class="panel panel-info">
         <div class="panel-heading" role="tab" id="headingTwo">
           <h4 class="panel-title">
@@ -110,7 +100,7 @@
       </div>
 
       <div class="panel panel-info">
-        <div class="panel-heading" role="tab" id="headingTwo">
+        <div class="panel-heading" role="tab" id="headingThree">
           <h4 class="panel-title">
             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
             全体を通して再生する
@@ -118,6 +108,38 @@
           </h4>
         </div>
       </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="headingFour">
+          <h4 class="panel-title">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            お手紙の一覧へ戻る
+            </a>
+          </h4>
+        </div>
+
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div class="panel-body">
+            <%= link_to '', '' %>
+            <p>ふがー。ajaxで画像一覧だすだに。並び替え機能もつけるだに。</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </main>
+
+<script type="text/javascript">
+  $(window).ready(function(){
+    $('input, textarea, select').on('keyup change', function(){
+      $(window).on('beforeunload', function() {
+        return "このページを離れると、入力したデータが削除されます。本当に移動しますか。";
+      });
+    });
+
+    $('a, input[type=submit]').on('click', function(e) {
+      $(window).off('beforeunload');
+    });
+  });
+</script>

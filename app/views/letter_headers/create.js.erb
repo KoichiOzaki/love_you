@@ -2,6 +2,10 @@ $('#letter_header_partial').html(
   "<%= j (render @letter_header) %>"
 );
 
-$('#letter_header_form').html(
+$('#letter-header-form').html(
   "<%=  j render partial: 'letter_headers/form', locals: { letter_header: @letter_header } %>"
+);
+
+$('#picture-form').html(
+  "<%=  j render partial: 'images/form', locals: { letter_header: @letter_header, image: @letter_header.images.first } %>"
 );

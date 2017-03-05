@@ -2,11 +2,12 @@
 #
 # Table name: images
 #
-#  id         :integer          not null, primary key
-#  image      :string(255)      not null
-#  message_id :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id               :integer          not null, primary key
+#  image            :string(255)      not null
+#  message_id       :integer          not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  letter_header_id :integer          not null
 #
 # Indexes
 #
@@ -14,4 +15,5 @@
 #
 
 class Image < ApplicationRecord
+  belongs_to :letter_header
 end

@@ -2,7 +2,8 @@ class LetterHeadersController < ApplicationController
   def create
     @letter_header = LetterHeader.new(letter_headers_params)
     if @letter_header.save
-      flash.now[:success] = 'どね(｀･ω･´)ゞ'
+      @letter_header.images.build
+      flash.now[:success] = 'LetterHeader更新どね(｀･ω･´)ゞ'
     else
       flash.now[:alert] = 'オーマイゴッド'
     end
@@ -11,7 +12,8 @@ class LetterHeadersController < ApplicationController
   def update
     @letter_header = LetterHeader.find(params[:id])
     if @letter_header.update(letter_headers_params)
-      flash.now[:success] = 'どね(｀･ω･´)ゞ'
+      @letter_header.images.build if @letter_header.images.blank?
+      flash.now[:success] = 'LetterHeader更新どね(｀･ω･´)ゞ'
     else
       flash.now[:alert] = 'オーマイゴッド'
     end

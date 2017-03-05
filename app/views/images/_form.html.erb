@@ -1,0 +1,25 @@
+<% flash.each do |key, value| %>
+  <% key = "info" if key == "notice" %>
+  <% key = "danger"  if key == "alert" %>
+  <%= content_tag :div, value, class: "alert alert-#{key}" %>
+<% end %>
+
+<% if letter_header.id.blank? %>
+  <h4 class="text-danger">まずお手紙情報を入力してね</h4>
+  <%= render partial: 'letter_headers/form', locals: { letter_header: letter_header } %>
+<% else %>
+  <p>愛しいあの人との思い出の画像をアップロードしよう！</p>
+  <%= form_for [letter_header, image] do |f| %>
+    <ol>
+      <li id="picture-controlFile">
+        <dl>
+          <dt>画像を選択してください</dt>
+          <dd class="form-group" style="margin-top: 5px;overflow: hidden;">
+            <%= f.file_field :image, class: "form-control" %>
+          </dd>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </dl>
+      </li>
+    </ol>
+  <% end %>
+<% end %>

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root to: 'top#index'
   resources :top, only: :index
-  resources :letters, only: [:index, :new]
+  resources :letters, only: [:index, :new, :edit]
   resources :messages, only: [:show, :new, :create, :edit, :update]
-  resources :letter_headers, only: [:show, :new, :create, :edit, :update]
-
+  resources :letter_headers, only: [:show, :new, :create, :edit, :update] do
+    resources :images, only: [:show, :new, :create, :edit, :update]
+  end
   # sorcery
   resources :user_sessions, only: [:new, :create, :destroy]
   resources :users, only: [:show, :new, :create, :edit, :update]

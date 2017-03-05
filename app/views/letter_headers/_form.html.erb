@@ -6,7 +6,7 @@
     <%= f.text_field :title, placeholder: "いつもありがとう的なサムシング", class: "form-control" %>
   </div>
     <p class="h5">宛先</p>
-    <% @letter_header.destinations.each do |destination| %>
+    <% letter_header.destinations.each do |destination| %>
       <div class="form-inline">
         <%= f.fields_for :destinations, destination do |d| %>
           <%= d.label :dear %>

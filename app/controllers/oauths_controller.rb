@@ -10,8 +10,6 @@ class OauthsController < ApplicationController
       redirect_to root_path, notice: "Logged in from #{provider.titleize}!"
     else
       begin
-        binding.pry
-        
         @user = create_from(provider)
         reset_session
         auto_login(@user)
