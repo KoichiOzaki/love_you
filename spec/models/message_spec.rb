@@ -6,6 +6,8 @@
 #  body       :text(65535)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  color      :string(255)
+#  animation  :string(255)
 #
 
 require 'rails_helper'

@@ -16,4 +16,5 @@
 
 class Image < ApplicationRecord
   belongs_to :letter_header
+  belongs_to :message
 end

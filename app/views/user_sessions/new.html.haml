@@ -1,4 +1,12 @@
-%h1 Login
-= link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
-= render 'form'
-= link_to 'Back', user_sessions_path
+%main
+  %div.container{style: "margin-top: 70px"}
+    %h1{style: "margin-top: 40px;"} Login
+    .panel.panel-default
+      .panel-heading FaceBookアカウントでログイン
+      .panel-body
+        = button_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook), class: "btn btn-info", method: :get
+      .panel-heading
+        %span.glyphicon.glyphicon-pencil ニックネームでログイン
+      .panel-body
+        = render 'form'
+        = link_to 'Back', user_sessions_path

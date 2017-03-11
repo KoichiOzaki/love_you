@@ -1,44 +1,40 @@
 <main>
   <div class="container" style="margin-top: 70px;">
-    DEMO
   </div>
   <div id="slide">
     <ul>
       <li>
         <div  class="image-letter" style="background: #eee;">
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 100px; height:300px; width:500px;" data-slide-no="<%= 0 %>" data-message-no="<%= 0 %>">
-            xxxxxxさんよりお便りが届きました
+          <p class='zoomIn h2' style="position: absolute; left: 250px; top: 100px; height:300px; width:500px;" data-slide-no="<%= 0 %>" data-message-no="<%= 0 %>">
+            <%= current_user.name %>さんよりお便りが届きました
           </p>
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 200px; height:200px; width:500px;" " data-slide-no="<%= 0 %>" data-message-no="<%= 1 %>">
-            愛しの上戸彩さんへ
+          <p class='zoomIn h2' style="position: absolute; left: 250px; top: 200px; height:200px; width:500px;" " data-slide-no="<%= 0 %>" data-message-no="<%= 1 %>">
+            <%= @letter_header.send_from %>さんへ
           </p>
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 300px; height:100px; width:500px;" data-slide-no="<%= 0 %>" data-message-no="<%= 2 %>">
-            ずっと見てました。結婚してください。
-          </p>
-        </div>
-      </li>
-      <li>
-        <div  class="image-letter" style="background: url(http://www.asahicom.jp/articles/images/AS20150412001447_comm.jpg)  center center no-repeat;"">
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 100px; height:300px; width:500px;" data-slide-no="<%= 1 %>" data-message-no="<%= 0 %>">
-            HIROと結婚しようが関係ありません。
-          </p>
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 200px; height:200px; width:500px;" " data-slide-no=<%= 1 %>" data-message-no="<%= 1 %>">
-            とりあえずけっこんしてくｄsas
-          </p>
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 300px; height:100px; width:500px;" data-slide-no="<%= 1 %>" data-message-no="<%= 2 %>">
-            とりあえずでいいんで結婚してくだｓsada
+          <p class='zoomIn h2' style="position: absolute; left: 250px; top: 300px; height:100px; width:500px;" data-slide-no="<%= 0 %>" data-message-no="<%= 2 %>">
+            <%= @letter_header.title %>
           </p>
         </div>
       </li>
+
+      <% @letter_header.letter_summaries.each do |letter_summary| %>
       <li>
-        <div  class="image-letter" style="background: url(http://pds.exblog.jp/pds/1/200501/31/42/a0002042_3565097.jpg)  center center no-repeat;"">
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 100px; height:300px; width:500px; color:<%= 'white' %>" data-slide-no="<%= 2 %>" data-message-no="<%= 0 %>">
+        <div  class="image-letter" style="background: url(<%= letter_summary.message.image.image %>)  center center no-repeat;"">
+          <p class='<%= letter_summary.message.animation %> h2' style="position: absolute; left: 250px; top: 100px; height:300px; width:500px; color:<%= letter_summary.message.color %>" data-slide-no="<%= letter_summary.sort_no %>" data-message-no="<%= 0 %>">
+            <%= letter_summary.message.body %>
+          </p>
+        </div>
+      </li>
+      <% end %>
+      <li>
+        <div  class="image-letter" style="background: url(http://pds.exblog.jp/pds/1/200501/31/42/a0002042_3565097.jpg) center center no-repeat;"">
+          <p class='zoomIn h2' style="position: absolute; left: 250px; top: 100px; height:300px; width:500px; color:<%= 'white' %>" data-slide-no="<%= 2 %>" data-message-no="<%= 0 %>">
             金八先生のあのボーイッシュな感じ。。。。
           </p>
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 200px; height:200px; width:500px; color:<%= 'white' %>" data-slide-no="<%= 2 %>" data-message-no="<%= 1 %>">
+          <p class='zoomIn h2' style="position: absolute; left: 250px; top: 200px; height:200px; width:500px; color:<%= 'white' %>" data-slide-no="<%= 2 %>" data-message-no="<%= 1 %>">
             好きでした。
           </p>
-          <p class='zoomIn-0 h2' style="position: absolute; left: 250px; top: 300px; height:100px; width:500px; color:<%= 'white' %>" data-slide-no="<%= 2 %>" data-message-no="<%= 2 %>">
+          <p class='zoomIn h2' style="position: absolute; left: 250px; top: 300px; height:100px; width:500px; color:<%= 'white' %>" data-slide-no="<%= 2 %>" data-message-no="<%= 2 %>">
             ずっと見てました。結婚してください。
           </p>
         </div>

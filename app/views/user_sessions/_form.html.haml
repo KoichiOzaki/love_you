@@ -1,15 +1,14 @@
 = form_tag user_sessions_path, :method => :post do
-  .field
+  .form-group
     = label_tag :name
-    %br
-    = text_field_tag :name
-  .field
+    = text_field_tag :name, '', class: "form-control", placeholder: 'あけぼの太郎'
+  .form-group
     = label_tag :password
+    = password_field_tag :password, '', class: "form-control", placeholder: ' ４文字以上で'
     %br
-    = password_field_tag :password
-    %br
+    .form-check
     = check_box_tag :remember, params[:remember], true
     = label_tag :remember
 
   .actions
-    = submit_tag "Login"
+    = button_tag 'Login', type: 'submit', class: "btn btn-primary"
